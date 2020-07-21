@@ -1,4 +1,8 @@
-﻿using System;
+﻿// Edward Fong
+// efong@cnm.edu
+// TShirtOrder.cs
+// Quiz 2
+using System;
 //TShirtOrder.cs
 //Programmer: Rob Garner (rgarner7@cnm.edu)
 //Date: 10 Mar 2020
@@ -11,7 +15,8 @@ namespace TShirtOrders
     /// </summary>
     public class TShirtOrder
     {
-        public TShirtOrder(string firstName="",string lastName = "", string address = "", DateTime? orderDate=null,bool isLocalPickup=true, double printAreaInSqIn, int numColors=1,int numShirts=1)
+        public TShirtOrder(string firstName="",string lastName = "", string address = "", DateTime? orderDate=null,bool isLocalPickup=true, 
+            double printAreaInSqIn=1, int numColors=1,int numShirts=1) //TODO: EF printAreaInSqIn had no value. Added 1 
         {
             FirstName = firstName;
             LastName = lastName;
@@ -39,7 +44,7 @@ namespace TShirtOrders
         public int NumColors
         {
             get { return NumColors; }
-            set { NumColors = value; Calc(); }
+            set { numColors = value; Calc(); } // TODO: EF NumColors set to NumColors. Should be set to the backing field. Created infinate loop
         }
 
         private int numShirts;
@@ -48,17 +53,20 @@ namespace TShirtOrders
             get { return numShirts; }
             set { numShirts = value; Calc(); }
         }
-        public decimal Price { private get; set; }
+        public decimal Price {  get; set; } // TODO: EF Price get is set to private which has made it inaccessible. Removed private accessor
         private void Calc()
         {
-            Price = numShirts * (numColors * 2.25 + printAreaInSqIn * .05);
+            Price = (decimal)(numShirts * (numColors * 2.25 + printAreaInSqIn * .05)); //TODO: EF printAreaInSqIn is a double but Price is decimal. Cast calculated result to decimal 
         }
         public override string ToString()
         {
+            
             return FirstName+" "
                 +LastName+" "
-                +OrderDate.ToString("MM/dd/yyyy HH:mm:ss")+" "
+               // +OrderDate.ToString()+" "
+                +OrderDate?.ToString("MM/dd/yyyy HH:mm:ss")+" " // TODO: EF missing ? after OrderDate
                 +" Price: "+Price.ToString("c");
         }
     }
+
 }

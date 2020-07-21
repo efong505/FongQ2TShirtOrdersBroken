@@ -1,4 +1,9 @@
-﻿using System;
+﻿// Edward Fong
+// efong@cnm.edu
+// Program.cs
+// Quiz 2
+// All corrections are under TODO: Comments with intitials EF
+using System;
 using System.Collections.Generic;
 
 //Program.cs
@@ -40,7 +45,7 @@ namespace TShirtOrders
         private static void DisplayTotal(List<TShirtOrder> orders)
         {
             decimal total = 0;
-            foreach (string order in orders)
+            foreach (var order in orders) // TODO: EF changed string type for order to var
             {
                 total += order.Price;
             }
@@ -52,7 +57,8 @@ namespace TShirtOrders
             int index = GetIntFromUser("Enter index of shirt order to remove: ");
             if (GetBoolFromUser("Are you sure you want to delete this order"))
             {
-                orders.Remove(index);
+                index -= 1; // TODO: EF zero indexed. Have to subtract 1 to remove correct item
+                orders.Remove(orders[index]);//TODO: EF Added order with referenced index of TShirt Order in List.
             }
         }
         private static void AddShirtOrder(List<TShirtOrder> orders)
@@ -78,7 +84,7 @@ namespace TShirtOrders
             Console.WriteLine("Current shirts orders:");
             if (orders.Count > 0)
             {
-                for (int i = 0; i < orders.Count(); ++i)
+                for (int i = 0; i < orders.Count; ++i) //TODO: EF removed closing parenthesis () because Count is not a method
                 {
                     Console.WriteLine((i + 1) + ": " + orders[i]);
                 }
