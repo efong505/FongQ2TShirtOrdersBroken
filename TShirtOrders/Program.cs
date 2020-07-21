@@ -6,10 +6,6 @@
 using System;
 using System.Collections.Generic;
 
-//Program.cs
-//Programmer: Rob Garner (rgarner7@cnm.edu)
-//Date: 10 Mar 2020
-//Purpose: Process a series of tshirt orders. 
 namespace TShirtOrders
 {
     class Program
