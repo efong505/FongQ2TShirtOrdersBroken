@@ -3,10 +3,7 @@
 // TShirtOrder.cs
 // Quiz 2
 using System;
-//TShirtOrder.cs
-//Programmer: Rob Garner (rgarner7@cnm.edu)
-//Date: 10 Mar 2020
-//Purpose: Model a TShirt order.
+
 namespace TShirtOrders
 {
     /// <summary>
